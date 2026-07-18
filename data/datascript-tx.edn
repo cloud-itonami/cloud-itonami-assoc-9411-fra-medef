@@ -1,0 +1,25 @@
+;; data/datascript-tx.edn — DataScript tx-data derived from src/association/facts.cljc
+;; `association.facts/catalog` (ADR-2607141700 Wave 0). Same shape as sibling files.
+
+[#:association-rule{:id "medef.cnpf-founding-1945-12-21"
+                     :title "CNPF (Conseil National du Patronat Français, MEDEF's direct predecessor)'s constituent assembly took place on 21 December 1945"
+                     :association "medef"
+                     :isic "9411"
+                     :country "FRA"
+                     :kind :governance-program
+                     :url "https://fr.wikipedia.org/wiki/Conseil_national_du_patronat_fran%C3%A7ais"
+                     :url-provenance :wikipedia-corroborated
+                     :established-date "1945-12-21"
+                     :retrieved-at "2026-07-18"
+                     :topic [:governance]}
+ #:association-rule{:id "medef.renamed-1998-10-27"
+                     :title "MEDEF (Mouvement des entreprises de France) was inaugurated in Strasbourg on 27 October 1998, succeeding CNPF"
+                     :association "medef"
+                     :isic "9411"
+                     :country "FRA"
+                     :kind :governance-program
+                     :url "https://fr.wikipedia.org/wiki/Mouvement_des_entreprises_de_France"
+                     :url-provenance :wikipedia-corroborated
+                     :established-date "1998-10-27"
+                     :retrieved-at "2026-07-18"
+                     :topic [:governance]}]
