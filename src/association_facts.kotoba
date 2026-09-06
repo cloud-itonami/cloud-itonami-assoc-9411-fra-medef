@@ -18,14 +18,15 @@
 
 (defn association-covered? [a :string] :bool (string=? a "medef"))
 
-(defn entry-count [a :string] :i64 (if (association-covered? a) 2 0))
+(defn entry-count [a :string] :i64 (if (association-covered? a) 13 0))
 
 (defn valid-entry? [a :string i :i64] :bool
-  (if (association-covered? a) (if (< i 0) false (< i 2)) false))
+  (if (association-covered? a) (if (< i 0) false (< i 13)) false))
 
 (defn entry-field [a :string i :i64 f :string] [:option :string]
   (if (valid-entry? a i)
-    (if (= i 0)
+    (cond
+      (= i 0)
       (cond
         (string=? f "id") (option-some-of [:option :string] "medef.cnpf-founding-1945-12-21")
         (string=? f "title") (option-some-of [:option :string] "CNPF (Conseil National du Patronat Français, MEDEF's direct predecessor)'s constituent assembly took place on 21 December 1945")
@@ -37,8 +38,8 @@
         (string=? f "url-provenance") (option-some-of [:option :string] "wikipedia-corroborated")
         (string=? f "established-date") (option-some-of [:option :string] "1945-12-21")
         (string=? f "retrieved-at") (option-some-of [:option :string] "2026-07-18")
-        :else (option-none-of [:option :string])
-        )
+        :else (option-none-of [:option :string]))
+      (= i 1)
       (cond
         (string=? f "id") (option-some-of [:option :string] "medef.renamed-1998-10-27")
         (string=? f "title") (option-some-of [:option :string] "MEDEF (Mouvement des entreprises de France) was inaugurated in Strasbourg on 27 October 1998, succeeding CNPF")
@@ -50,41 +51,266 @@
         (string=? f "url-provenance") (option-some-of [:option :string] "wikipedia-corroborated")
         (string=? f "established-date") (option-some-of [:option :string] "1998-10-27")
         (string=? f "retrieved-at") (option-some-of [:option :string] "2026-07-18")
-        :else (option-none-of [:option :string])
-        )
-      )
+        :else (option-none-of [:option :string]))
+      (= i 2)
+      (cond
+        (string=? f "id") (option-some-of [:option :string] "medef.statuts-art1-association-loi-1901")
+        (string=? f "title") (option-some-of [:option :string] "Statuts art. 1 (Dénomination et objet): sous la dénomination de Mouvement des Entreprises de France (MEDEF), une association de la loi de 1901 est constituée, sous forme de confédération, entre les organisations professionnelles et territoriales d'entreprises, qui adhèrent aux présents statuts")
+        (string=? f "association") (option-some-of [:option :string] "medef")
+        (string=? f "isic") (option-some-of [:option :string] "9411")
+        (string=? f "country") (option-some-of [:option :string] "FRA")
+        (string=? f "kind") (option-some-of [:option :string] "constitutive-instrument")
+        (string=? f "url") (option-some-of [:option :string] "https://www.medef.com/uploads/media/default/0019/99/14271-statuts-medef-11-2021.pdf")
+        (string=? f "url-provenance") (option-some-of [:option :string] "official-medef-com")
+        (string=? f "established-date") (option-some-of [:option :string] "1998-10-27")
+        (string=? f "last-revised-date") (option-some-of [:option :string] "2019-07-02")
+        (string=? f "retrieved-at") (option-some-of [:option :string] "2026-09-06")
+        :else (option-none-of [:option :string]))
+      (= i 3)
+      (cond
+        (string=? f "id") (option-some-of [:option :string] "medef.statuts-art4-siege-paris")
+        (string=? f "title") (option-some-of [:option :string] "Statuts art. 4 (Siège social): le Mouvement des entreprises de France a son siège au 55 avenue Bosquet, 75007 Paris; il peut être transféré en tout autre endroit par décision du conseil exécutif")
+        (string=? f "association") (option-some-of [:option :string] "medef")
+        (string=? f "isic") (option-some-of [:option :string] "9411")
+        (string=? f "country") (option-some-of [:option :string] "FRA")
+        (string=? f "kind") (option-some-of [:option :string] "governance-program")
+        (string=? f "url") (option-some-of [:option :string] "https://www.medef.com/uploads/media/default/0019/99/14271-statuts-medef-11-2021.pdf")
+        (string=? f "url-provenance") (option-some-of [:option :string] "official-medef-com")
+        (string=? f "last-revised-date") (option-some-of [:option :string] "2019-07-02")
+        (string=? f "retrieved-at") (option-some-of [:option :string] "2026-09-06")
+        :else (option-none-of [:option :string]))
+      (= i 4)
+      (cond
+        (string=? f "id") (option-some-of [:option :string] "medef.statuts-art5-duree-illimitee")
+        (string=? f "title") (option-some-of [:option :string] "Statuts art. 5 (Durée): la durée du Mouvement des entreprises de France n'est pas limitée")
+        (string=? f "association") (option-some-of [:option :string] "medef")
+        (string=? f "isic") (option-some-of [:option :string] "9411")
+        (string=? f "country") (option-some-of [:option :string] "FRA")
+        (string=? f "kind") (option-some-of [:option :string] "constitutive-instrument")
+        (string=? f "url") (option-some-of [:option :string] "https://www.medef.com/uploads/media/default/0019/99/14271-statuts-medef-11-2021.pdf")
+        (string=? f "url-provenance") (option-some-of [:option :string] "official-medef-com")
+        (string=? f "last-revised-date") (option-some-of [:option :string] "2019-07-02")
+        (string=? f "retrieved-at") (option-some-of [:option :string] "2026-09-06")
+        :else (option-none-of [:option :string]))
+      (= i 5)
+      (cond
+        (string=? f "id") (option-some-of [:option :string] "medef.statuts-art6-composition")
+        (string=? f "title") (option-some-of [:option :string] "Statuts art. 6 (Composition): MEDEF est constitué d'organisations professionnelles nationales et d'organisations territoriales (régionales, départementales et locales), qui en sont les membres actifs; des membres associés siègent à l'assemblée générale avec voix consultative et à l'assemblée électorale avec voix délibérative")
+        (string=? f "association") (option-some-of [:option :string] "medef")
+        (string=? f "isic") (option-some-of [:option :string] "9411")
+        (string=? f "country") (option-some-of [:option :string] "FRA")
+        (string=? f "kind") (option-some-of [:option :string] "membership-rule")
+        (string=? f "url") (option-some-of [:option :string] "https://www.medef.com/uploads/media/default/0019/99/14271-statuts-medef-11-2021.pdf")
+        (string=? f "url-provenance") (option-some-of [:option :string] "official-medef-com")
+        (string=? f "last-revised-date") (option-some-of [:option :string] "2019-07-02")
+        (string=? f "retrieved-at") (option-some-of [:option :string] "2026-09-06")
+        :else (option-none-of [:option :string]))
+      (= i 6)
+      (cond
+        (string=? f "id") (option-some-of [:option :string] "medef.statuts-art31-cotisations")
+        (string=? f "title") (option-some-of [:option :string] "Statuts art. 31 (Budget - Cotisations): les ressources se composent des cotisations de ses membres, de l'intérêt des fonds placés et de toutes autres ressources autorisées par la loi; les taux de cotisation sont votés en même temps et dans les mêmes conditions que le budget")
+        (string=? f "association") (option-some-of [:option :string] "medef")
+        (string=? f "isic") (option-some-of [:option :string] "9411")
+        (string=? f "country") (option-some-of [:option :string] "FRA")
+        (string=? f "kind") (option-some-of [:option :string] "membership-rule")
+        (string=? f "url") (option-some-of [:option :string] "https://www.medef.com/uploads/media/default/0019/99/14271-statuts-medef-11-2021.pdf")
+        (string=? f "url-provenance") (option-some-of [:option :string] "official-medef-com")
+        (string=? f "last-revised-date") (option-some-of [:option :string] "2019-07-02")
+        (string=? f "retrieved-at") (option-some-of [:option :string] "2026-09-06")
+        :else (option-none-of [:option :string]))
+      (= i 7)
+      (cond
+        (string=? f "id") (option-some-of [:option :string] "medef.ct-l2151-1-criteres-representativite")
+        (string=? f "title") (option-some-of [:option :string] "Code du travail art. L2151-1: la représentativité des organisations professionnelles d'employeurs est déterminée d'après les critères cumulatifs suivants: 1° le respect des valeurs républicaines; 2° l'indépendance; 3° la transparence financière; 4° une ancienneté minimale de deux ans; puis l'influence et l'audience")
+        (string=? f "association") (option-some-of [:option :string] "medef")
+        (string=? f "isic") (option-some-of [:option :string] "9411")
+        (string=? f "country") (option-some-of [:option :string] "FRA")
+        (string=? f "kind") (option-some-of [:option :string] "statute")
+        (string=? f "url") (option-some-of [:option :string] "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033023411")
+        (string=? f "url-provenance") (option-some-of [:option :string] "official-legifrance")
+        (string=? f "last-revised-date") (option-some-of [:option :string] "2016-08-08")
+        (string=? f "retrieved-at") (option-some-of [:option :string] "2026-09-06")
+        :else (option-none-of [:option :string]))
+      (= i 8)
+      (cond
+        (string=? f "id") (option-some-of [:option :string] "medef.ct-l2152-1-branche")
+        (string=? f "title") (option-some-of [:option :string] "Code du travail art. L2152-1: dans les branches professionnelles, sont représentatives les organisations professionnelles d'employeurs qui satisfont aux critères de l'article L. 2151-1, disposent d'une implantation territoriale équilibrée au sein de la branche et dont les entreprises adhérentes représentent au moins 8 % des entreprises adhérant aux organisations candidates")
+        (string=? f "association") (option-some-of [:option :string] "medef")
+        (string=? f "isic") (option-some-of [:option :string] "9411")
+        (string=? f "country") (option-some-of [:option :string] "FRA")
+        (string=? f "kind") (option-some-of [:option :string] "statute")
+        (string=? f "url") (option-some-of [:option :string] "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000029946324/2014-12-22")
+        (string=? f "url-provenance") (option-some-of [:option :string] "official-legifrance")
+        (string=? f "last-revised-date") (option-some-of [:option :string] "2014-12-20")
+        (string=? f "retrieved-at") (option-some-of [:option :string] "2026-09-06")
+        :else (option-none-of [:option :string]))
+      (= i 9)
+      (cond
+        (string=? f "id") (option-some-of [:option :string] "medef.ct-l2152-4-national-interprofessionnel")
+        (string=? f "title") (option-some-of [:option :string] "Code du travail art. L2152-4: sont représentatives au niveau national et interprofessionnel les organisations professionnelles d'employeurs qui satisfont aux critères des 1° à 5° de l'article L. 2151-1, dont les organisations adhérentes sont représentatives à la fois dans des branches de l'industrie, de la construction, du commerce et des services, et dont les entreprises et organisations adhérentes représentent au moins 8 % de l'ensemble ou au moins 8 % des salariés")
+        (string=? f "association") (option-some-of [:option :string] "medef")
+        (string=? f "isic") (option-some-of [:option :string] "9411")
+        (string=? f "country") (option-some-of [:option :string] "FRA")
+        (string=? f "kind") (option-some-of [:option :string] "statute")
+        (string=? f "url") (option-some-of [:option :string] "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000028689659/")
+        (string=? f "url-provenance") (option-some-of [:option :string] "official-legifrance")
+        (string=? f "retrieved-at") (option-some-of [:option :string] "2026-09-06")
+        :else (option-none-of [:option :string]))
+      (= i 10)
+      (cond
+        (string=? f "id") (option-some-of [:option :string] "medef.loi-2014-288-democratie-sociale")
+        (string=? f "title") (option-some-of [:option :string] "LOI n° 2014-288 du 5 mars 2014 relative à la formation professionnelle, à l'emploi et à la démocratie sociale (NOR ETSX1400015L): son Titre II (Démocratie sociale) porte la représentativité patronale, la représentativité syndicale et le financement des organisations professionnelles d'employeurs et syndicales")
+        (string=? f "association") (option-some-of [:option :string] "medef")
+        (string=? f "isic") (option-some-of [:option :string] "9411")
+        (string=? f "country") (option-some-of [:option :string] "FRA")
+        (string=? f "kind") (option-some-of [:option :string] "statute")
+        (string=? f "url") (option-some-of [:option :string] "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000028683576")
+        (string=? f "url-provenance") (option-some-of [:option :string] "official-legifrance")
+        (string=? f "established-date") (option-some-of [:option :string] "2014-03-05")
+        (string=? f "retrieved-at") (option-some-of [:option :string] "2026-09-06")
+        :else (option-none-of [:option :string]))
+      (= i 11)
+      (cond
+        (string=? f "id") (option-some-of [:option :string] "medef.arrete-2025-07-08-representativite")
+        (string=? f "title") (option-some-of [:option :string] "Arrêté du 8 juillet 2025 (NOR TSST2509392A, JORF du 9 juillet 2025 n° 0158) art. 1: sont reconnues représentatives au niveau national et interprofessionnel le Mouvement des entreprises de France (MEDEF), la Confédération des petites et moyennes entreprises (CPME) et l'Union des entreprises de proximité (U2P); art. 2 fixe la pondération du MEDEF à 63,42 %")
+        (string=? f "association") (option-some-of [:option :string] "medef")
+        (string=? f "isic") (option-some-of [:option :string] "9411")
+        (string=? f "country") (option-some-of [:option :string] "FRA")
+        (string=? f "kind") (option-some-of [:option :string] "statute")
+        (string=? f "url") (option-some-of [:option :string] "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051862327")
+        (string=? f "url-provenance") (option-some-of [:option :string] "official-legifrance")
+        (string=? f "established-date") (option-some-of [:option :string] "2025-07-08")
+        (string=? f "retrieved-at") (option-some-of [:option :string] "2026-09-06")
+        :else (option-none-of [:option :string]))
+      (= i 12)
+      (cond
+        (string=? f "id") (option-some-of [:option :string] "medef.arrete-2024-02-09-representativite")
+        (string=? f "title") (option-some-of [:option :string] "Arrêté du 9 février 2024 (NOR TSST2401325A, JORF du 16 février 2024 n° 0039) art. 1: mêmes trois organisations reconnues représentatives au niveau national et interprofessionnel, pondération du MEDEF alors fixée à 69,21 % — remplacé par l'arrêté du 8 juillet 2025")
+        (string=? f "association") (option-some-of [:option :string] "medef")
+        (string=? f "isic") (option-some-of [:option :string] "9411")
+        (string=? f "country") (option-some-of [:option :string] "FRA")
+        (string=? f "kind") (option-some-of [:option :string] "statute")
+        (string=? f "url") (option-some-of [:option :string] "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000049151004")
+        (string=? f "url-provenance") (option-some-of [:option :string] "official-legifrance")
+        (string=? f "established-date") (option-some-of [:option :string] "2024-02-09")
+        (string=? f "retrieved-at") (option-some-of [:option :string] "2026-09-06")
+        :else (option-none-of [:option :string]))
+      :else (option-none-of [:option :string]))
     (option-none-of [:option :string])))
 
 (defn topic-count [a :string i :i64] :i64
   (if (valid-entry? a i)
-    (if (= i 0) 1 (if (= i 1) 1 0))
+    (cond
+      (= i 0) 1
+      (= i 1) 1
+      (= i 2) 2
+      (= i 3) 1
+      (= i 4) 2
+      (= i 5) 1
+      (= i 6) 2
+      (= i 7) 2
+      (= i 8) 1
+      (= i 9) 2
+      (= i 10) 2
+      (= i 11) 2
+      (= i 12) 2
+      :else 0)
     0))
 
 (defn topic [a :string i :i64 t :i64] [:option :string]
   (if (valid-entry? a i)
-    (if (= i 0)
-      (if (= t 0) (option-some-of [:option :string] "governance") (option-none-of [:option :string]))
-    (if (= i 1)
-      (if (= t 0) (option-some-of [:option :string] "governance") (option-none-of [:option :string]))
-    (option-none-of [:option :string])))
+    (cond
+      (= i 0)
+      (cond
+        (= t 0) (option-some-of [:option :string] "governance")
+        :else (option-none-of [:option :string]))
+      (= i 1)
+      (cond
+        (= t 0) (option-some-of [:option :string] "governance")
+        :else (option-none-of [:option :string]))
+      (= i 2)
+      (cond
+        (= t 0) (option-some-of [:option :string] "governance")
+        (= t 1) (option-some-of [:option :string] "corporate-form")
+        :else (option-none-of [:option :string]))
+      (= i 3)
+      (cond
+        (= t 0) (option-some-of [:option :string] "governance")
+        :else (option-none-of [:option :string]))
+      (= i 4)
+      (cond
+        (= t 0) (option-some-of [:option :string] "governance")
+        (= t 1) (option-some-of [:option :string] "corporate-form")
+        :else (option-none-of [:option :string]))
+      (= i 5)
+      (cond
+        (= t 0) (option-some-of [:option :string] "membership")
+        :else (option-none-of [:option :string]))
+      (= i 6)
+      (cond
+        (= t 0) (option-some-of [:option :string] "membership")
+        (= t 1) (option-some-of [:option :string] "finance")
+        :else (option-none-of [:option :string]))
+      (= i 7)
+      (cond
+        (= t 0) (option-some-of [:option :string] "governance")
+        (= t 1) (option-some-of [:option :string] "statute")
+        :else (option-none-of [:option :string]))
+      (= i 8)
+      (cond
+        (= t 0) (option-some-of [:option :string] "statute")
+        :else (option-none-of [:option :string]))
+      (= i 9)
+      (cond
+        (= t 0) (option-some-of [:option :string] "governance")
+        (= t 1) (option-some-of [:option :string] "statute")
+        :else (option-none-of [:option :string]))
+      (= i 10)
+      (cond
+        (= t 0) (option-some-of [:option :string] "governance")
+        (= t 1) (option-some-of [:option :string] "statute")
+        :else (option-none-of [:option :string]))
+      (= i 11)
+      (cond
+        (= t 0) (option-some-of [:option :string] "governance")
+        (= t 1) (option-some-of [:option :string] "statute")
+        :else (option-none-of [:option :string]))
+      (= i 12)
+      (cond
+        (= t 0) (option-some-of [:option :string] "governance")
+        (= t 1) (option-some-of [:option :string] "statute")
+        :else (option-none-of [:option :string]))
+      :else (option-none-of [:option :string]))
     (option-none-of [:option :string])))
 
 (defn by-topic-count [a :string candidate :string] :i64
   (if (association-covered? a)
-    (if (string=? candidate "governance") 2 0)
+    (cond
+      (string=? candidate "governance") 10
+      (string=? candidate "corporate-form") 2
+      (string=? candidate "membership") 2
+      (string=? candidate "finance") 1
+      (string=? candidate "statute") 6
+      :else 0)
     0))
 
 (defn by-topic-id [a :string candidate :string i :i64] [:option :string]
   (if (association-covered? a)
     (if (= i 0)
-      (if (string=? candidate "governance") (entry-field a 0 "id") (option-none-of [:option :string]))
+      (cond
+        (string=? candidate "governance") (entry-field a 0 "id")
+        (string=? candidate "corporate-form") (entry-field a 2 "id")
+        (string=? candidate "membership") (entry-field a 5 "id")
+        (string=? candidate "finance") (entry-field a 6 "id")
+        (string=? candidate "statute") (entry-field a 7 "id")
+        :else (option-none-of [:option :string]))
       (option-none-of [:option :string]))
     (option-none-of [:option :string])))
 
 (defn coverage-note [a :string] [:option :string]
   (if (association-covered? a)
     (option-some-of [:option :string]
-      "cloud-itonami-assoc-9411-fra-medef Wave 0 (ADR-2607141700): 2 medef entries seeded with an official citation. Extend the sovereign catalog; never fabricate a rule id/url.")
+      "cloud-itonami-assoc-9411-fra-medef Wave 0 (ADR-2607141700): 13 medef entries seeded with an official citation. Extend the sovereign catalog; never fabricate a rule id/url.")
     (option-none-of [:option :string])))
 
 (defn main [] :i64 0)
