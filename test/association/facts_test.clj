@@ -6,7 +6,7 @@
   fill a field, an id reused so one entry silently overwrites another. So the
   assertions below are about provenance and shape, and each is written so that
   a fabricated or careless entry fails it."
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [clojure.test :refer [deftest is testing]]
             [association.facts :as facts]))
 
